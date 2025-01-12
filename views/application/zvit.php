@@ -1,4 +1,6 @@
-
+<?php
+use app\services\AgentService;
+?>
 <div>
     <h1>Applications</h1>
     <!-- <form action="/application" method="GET"> -->
@@ -24,11 +26,11 @@
             <?php foreach($agents as $agent): ?>
             <tr>
                 <td><?=$agent->full_name?></td>
-                <td><?=$agent->ApplicationNumberByCategory('Відключення',$dates)?></td>
-                <td><?=$agent->ApplicationNumberByCategory('Перевірка/здешевлення',$dates)?></td>
-                <td><?=$agent->ApplicationNumberByCategory('Технічне питання',$dates)?></td>
-                <td><?=$agent->ApplicationNumberByCategory('Інше',$dates)?></td>
-                <td><?=$agent->ApplicationsNumber($dates)?></td>
+                <td><?=AgentService::ApplicationNumberByCategory('Відключення',$agent->id,$dates)?></td>
+                <td><?=AgentService::ApplicationNumberByCategory('Перевірка/здешевлення',$agent->id,$dates)?></td>
+                <td><?=AgentService::ApplicationNumberByCategory('Технічне питання',$agent->id,$dates)?></td>
+                <td><?=AgentService::ApplicationNumberByCategory('Інше',$agent->id,$dates)?></td>
+                <td><?=AgentService::ApplicationsNumber($agent->id,$dates)?></td>
             </tr>
             <?php endforeach ?>
         </tbody>

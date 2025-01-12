@@ -58,16 +58,16 @@ class ApplicationController extends Controller
         $date_of_decision_start = null;
         $date_of_decision_end = null;
 
-        if (isset(Yii::$app->request->get()['date_of_decision_start'])) $date_of_decision_start =Yii::$app->request->get()['date_of_decision_start'];
+        if (isset(Yii::$app->request->get()['date_of_decision_start'])) $date_of_decision_start = Yii::$app->request->get()['date_of_decision_start'];
         if (isset(Yii::$app->request->get()['date_of_decision_end'])) $date_of_decision_end = Yii::$app->request->get()['date_of_decision_end'];
 
-        $dates=[$date_of_decision_start,$date_of_decision_end];
-
+        $dates = [$date_of_decision_start, $date_of_decision_end];
+        
         $agents = Agents::find()->all();
 
         return $this->render('zvit', [
             'agents' => $agents,
-            'dates'=>$dates
+            'dates' => $dates
         ]);
     }
 }
